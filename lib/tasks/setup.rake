@@ -6,8 +6,6 @@ task :setup => :environment do
 end
 
 task setup_sample_data: :environment do
-  return if Rails.env.production?
-
   User.transaction do
     User.create! email: "john@example.com", password: "welcome", name: "John Smith"
   end
