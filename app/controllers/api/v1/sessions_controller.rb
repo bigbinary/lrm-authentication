@@ -7,7 +7,10 @@ class Api::V1::SessionsController < Devise::SessionsController
   def create
     user_params = user_login_params
     user = User.find_for_database_authentication(email: user_params[:email])
-    if user.blank? || !user.valid_password?(user_params[:password])
+
+    if params[:give_me_500]
+      raise 'raising error so that client gets 500 internal server error'
+    elsif user.blank? || !user.valid_password?(user_params[:password])
       unauthorized_response
     else
       user.reset_authentication_token! unless user.authentication_token
