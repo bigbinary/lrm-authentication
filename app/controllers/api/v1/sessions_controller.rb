@@ -1,18 +1,18 @@
 class Api::V1::SessionsController < Devise::SessionsController
+
   skip_before_filter :verify_authenticity_token
+
   respond_to :json
 
   def create
     user_params = user_login_params
-    p user_params
     user = User.find_for_database_authentication(email: user_params[:email])
-    if user.blank? or !user.valid_password?(user_params[:password])
+    if user.blank? || !user.valid_password?(user_params[:password])
       unauthorized_response
     else
       user.reset_authentication_token! unless user.authentication_token
       render json: {success: true, authToken: user.authentication_token}
     end
-
   end
 
   def destroy
