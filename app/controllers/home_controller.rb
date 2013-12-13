@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @emails = User.pluck(:email).all
+    @emails = User.pluck(:email)
   end
 end
