@@ -10,7 +10,7 @@ LrmAuthentication::Application.routes.draw do
       devise_scope :user do
         post 'login' => 'sessions#create'
         delete 'logout' => 'sessions#destroy'
-        post 'forgot_password' => 'passwords#create'
+        post 'reset_password' => 'passwords#create'
       end
     end
   end
