@@ -5,7 +5,7 @@ class Api::V1::PasswordsController < Devise::PasswordsController
   respond_to :json
 
   def create
-    if User.exists?(email: params[:email])
+    if User.exists?(email: params[:user][:email])
       render json: {success: true}
     else
       render json: {success: false}, status: :not_found
