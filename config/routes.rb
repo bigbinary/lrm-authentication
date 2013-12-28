@@ -12,6 +12,7 @@ LrmAuthentication::Application.routes.draw do
         delete 'logout' => 'sessions#destroy'
         post 'reset_password' => 'passwords#create'
       end
+      resources :posts
     end
   end
 

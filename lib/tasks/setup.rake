@@ -11,7 +11,10 @@ task setup_sample_data: :environment do
   User.delete_all
 
   User.transaction do
-    User.create! email: "john@example.com", password: "welcome", name: "John Smith"
+    john = User.create! email: "john@example.com", password: "welcome", name: "John Smith"
+
+    Posts.create! user: john, title: "My First Post", content: "Welcome to my new Post"
+    Posts.create! user: john, title: "A new day", content: "This is where I write about another technical discussions."
   end
 
   puts 'populating sample data is done'

@@ -1,10 +1,10 @@
 development:
   adapter: postgresql
-  database: caregeneral_development
+  database: lrm_development
   host: localhost
 
 test:
   adapter: postgresql
-  database: caregeneral_test
+  database: lrm_test
   host: localhost
 
